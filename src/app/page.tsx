@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -22,6 +23,15 @@ export default function Home() {
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
+
+        <div className="flex flex-col items-center gap-4">
+          <Link href="/create">
+            Create an Anonymous Inbox
+          </Link>
+          <Link href="/send/sample-inbox-id">
+            Send a Message to an Inbox
+          </Link>
+        </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
