@@ -31,5 +31,40 @@ body {
 }
 
 .input-field {
-  @apply w-full p-3 rounded-lg bg-white/5 border border-blue-500/20 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all;
+  @apply w-full p-3 rounded-lg border-none outline-none transition-all;
+  background-color: #fff;
+  background-image: 
+    linear-gradient(90deg, transparent 0%, transparent 5%, #fff 5%, #fff 100%),
+    linear-gradient(#bbc 1px, transparent 1px);
+  background-size: 100% 1.2rem;
+  line-height: 1.2rem;
+  padding-top: 1.2rem;
+  padding-bottom: 0;
+  font-family: var(--font-caveat);
+  font-size: 1.25rem;
+}
+
+.notebook-paper {
+  background-color: white;
+  background-image: 
+    linear-gradient(90deg, transparent 0%, transparent 5%, #fff 5%, #fff 100%),
+    linear-gradient(#bbc 1px, transparent 1px);
+  background-size: 100% 1.2rem;
+  border-radius: 8px;
+  box-shadow: 
+    0 0 0 1px rgba(0,0,0,0.05),
+    0 4px 6px -1px rgba(0,0,0,0.1),
+    0 2px 4px -1px rgba(0,0,0,0.06);
+  position: relative;
+}
+
+.notebook-paper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #f88;
+  margin-left: 4%;
 }

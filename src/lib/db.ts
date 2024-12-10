@@ -6,9 +6,14 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
+export interface Message {
+  content: string;
+  created_at: string;
+}
+
 export interface Database {
   createInbox(): Promise<string>;
-  getInboxMessages(id: string): Promise<string[]>;
+  getInboxMessages(id: string): Promise<Message[]>;
   sendMessage(id: string, message: string): Promise<void>;
 }
 
@@ -27,10 +32,11 @@ export const db: Database = {
   async getInboxMessages(id) {
     const { data, error } = await supabase
       .from('messages')
-      .select('content')
-      .eq('inbox_id', id);
+      .select('content,created_at')
+      .eq('inbox_id', id)
+      .order('created_at', { ascending: false });
     if (error) throw error;
-    return data.map((message) => message.content);
+    return data;
   },
   async sendMessage(id, message) {
     const { error } = await supabase
